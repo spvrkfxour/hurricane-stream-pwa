@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { AddChannel } from '../assets';
 
 const TeamChannelList = ({ children, error = false, loading, type, isCreating, setIsCreating, setCreateType, setIsEditing, setToggleContainer }) => {

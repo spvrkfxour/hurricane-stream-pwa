@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useChatContext } from 'stream-chat-react';
-
 import { UserList } from './';
 import { CloseCreateChannel } from '../assets';
 
@@ -12,7 +11,7 @@ const ChannelNameInput = ({ channelName = '', setChannelName }) => {
         event.preventDefault();
 
         setChannelName(event.target.value);
-    }
+    };
 
     return (
         <div className='channel-name-input__wrapper'>
@@ -21,7 +20,7 @@ const ChannelNameInput = ({ channelName = '', setChannelName }) => {
             <p>Add Members</p>
         </div>
     );
-}
+};
 
 const EditChannel = ({ setIsEditing }) => {
     const { channel } = useChatContext();
@@ -44,7 +43,7 @@ const EditChannel = ({ setIsEditing }) => {
         setChannelName(null);
         setIsEditing(false);
         setSelectedUsers([]);
-    }
+    };
 
     return (
         <div className='edit-channel__container'>
@@ -59,6 +58,6 @@ const EditChannel = ({ setIsEditing }) => {
             </div>
         </div>
     );
-}
+};
 
 export default EditChannel;

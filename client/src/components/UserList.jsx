@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar, useChatContext } from 'stream-chat-react';
-
 import { InviteIcon } from '../assets';
 
 const ListContainer = ({ children }) => {
@@ -13,20 +12,20 @@ const ListContainer = ({ children }) => {
             {children}
         </div>
     );
-}
+};
 
 const UserItem = ({ user, setSelectedUsers }) => {
     const [selected, setSelected] = useState(false);
 
     const handleSelect = () => {
         if(selected) {
-            setSelectedUsers((prevUsers) => prevUsers.filter((prevUser) => prevUser !== user.id))
+            setSelectedUsers((prevUsers) => prevUsers.filter((prevUser) => prevUser !== user.id));
         } else {
-            setSelectedUsers((prevUsers) => [... prevUsers, user.id])
+            setSelectedUsers((prevUsers) => [... prevUsers, user.id]);
         }
 
         setSelected((prevSelected) => !prevSelected);
-    }
+    };
 
     return (
         <div className='user-item__wrapper' onClick={handleSelect}>
@@ -37,7 +36,7 @@ const UserItem = ({ user, setSelectedUsers }) => {
             {selected ? <InviteIcon /> : <div className='user-item__invite-empty' />}
         </div>
     );
-}
+};
 
 const UserList = ({ setSelectedUsers }) => {
     const { client } = useChatContext();
@@ -80,7 +79,7 @@ const UserList = ({ setSelectedUsers }) => {
                     Error loading, please refresh and try again.
                 </div>
             </ListContainer>
-        )
+        );
     }
 
     if(listEmpty) {
@@ -90,7 +89,7 @@ const UserList = ({ setSelectedUsers }) => {
                     No users found.
                 </div>
             </ListContainer>
-        )
+        );
     }
 
     return (
@@ -104,6 +103,6 @@ const UserList = ({ setSelectedUsers }) => {
             )}
         </ListContainer>
     );
-}
+};
 
 export default UserList;

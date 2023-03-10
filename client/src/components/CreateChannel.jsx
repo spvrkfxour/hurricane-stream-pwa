@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useChatContext } from 'stream-chat-react';
-
 import { UserList } from './';
 import { CloseCreateChannel } from '../assets';
 
@@ -21,7 +20,7 @@ const ChannelNameInput = ({ channelName = '', setChannelName }) => {
             <p>Add Members</p>
         </div>
     );
-}
+};
 
 const CreateChannel = ({ createType, setIsCreating }) => {
     const { client, setActiveChannel } = useChatContext();
@@ -45,7 +44,7 @@ const CreateChannel = ({ createType, setIsCreating }) => {
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     return (
         <div className='create-channel__container'>
@@ -60,6 +59,6 @@ const CreateChannel = ({ createType, setIsCreating }) => {
             </div>
         </div>
     );
-}
+};
 
 export default CreateChannel;

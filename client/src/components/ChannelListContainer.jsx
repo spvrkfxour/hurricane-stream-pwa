@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { ChannelList, useChatContext } from 'stream-chat-react';
 import Cookies from 'universal-cookie';
-
 import { ChannelSearch, TeamChannelList, TeamChannelPreview } from './';
-import HospitalIcon from '../assets/hospital.png';
+import Logo from '../assets/logo.png';
 import LogoutIcon from '../assets/logout.png';
 
 const cookies = new Cookies();
@@ -12,7 +11,7 @@ const SideBar = ({ logout }) => (
     <div className='channel-list__sidebar'>
         <div className='channel-list__sidebar__icon1'>
             <div className='icon1__inner'>
-                <img src={HospitalIcon} alt='Hurricane' width='30' />
+                <img src={Logo} alt='Hurricane' width='30' />
             </div>
         </div>
         <div className='channel-list__sidebar__icon2'>
@@ -31,11 +30,11 @@ const CompanyHeader = () => (
 
 const customChannelTeamFilter = (channels) => {
     return channels.filter((channel) => channel.type === 'team');
-}
+};
 
 const customChannelMessagingFilter = (channels) => {
     return channels.filter((channel) => channel.type === 'messaging');
-}
+};
 
 const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEditing, setToggleContainer }) => {
     const { client } = useChatContext();
@@ -52,14 +51,14 @@ const ChannelListContent = ({ isCreating, setIsCreating, setCreateType, setIsEdi
         window.location.reload();
     }
 
-    const filters = { members: { $in: [client.userID] } }
+    const filters = { members: { $in: [client.userID] } };
 
     return (
         <>
             <SideBar logout={logout} />
             <div className='channel-list__list__wrapper'>
                 <CompanyHeader />
-                <ChannelSearch />
+                <ChannelSearch setToggleContainer={setToggleContainer} />
                 <ChannelList 
                     filters={filters}
                     channelRenderFilterFn={customChannelTeamFilter}
@@ -139,6 +138,6 @@ const ChannelListContainer = ({ setCreateType, setIsCreating, setIsEditing }) =>
             </div>
         </>
     );
-}
+};
 
 export default ChannelListContainer;

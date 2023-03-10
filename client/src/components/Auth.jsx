@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-
 import signinImage from '../assets/signup.jpg';
 
 const cookies = new Cookies();
@@ -12,24 +11,21 @@ const initialState = {
     password: '',
     confirmPassword: '',
     phoneNumber: '',
-    avatarURL: '',
-}
+    avatarURL: ''
+};
 
 const Auth = () => {
     const [form, setForm] = useState(initialState);
     const [isSignup, setIsSignup] = useState(true);
-
     const handleChange = (e) => {
-        setForm({ ... form, [e.target.name]: e.target.value });
-    }
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const { username, password, phoneNumber, avatarURL } = form;
-
         const URL = 'http://localhost:5000/auth';
-
         const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
             username, password, fullName: form.fullName, phoneNumber, avatarURL,
         });
@@ -46,11 +42,11 @@ const Auth = () => {
         }
 
         window.location.reload();
-    }
+    };
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
-    }
+    };
 
     return (
         <div className='auth__form-container'>
